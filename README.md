@@ -75,3 +75,16 @@ from main directory:
 ```
 cmake --build cmake-build-release --target all -- -j 25
 ```
+
+## Flashing
+I use the stm32flash utility to flash the board. I am running Linux
+Mint and was able to install stm32flash with `sudo apt install
+stm32flash`. I hook up the serial cable, move the BOOT0 jumper over
+on the board so it is on the "1" side, hit the reset button, and then
+from the `cmake-build-release` directory type:
+```
+stm32flash /dev/ttyUSB0 -w kim1-blackpill.bin -v
+```
+When it is done, I move the BOOT0 jumper back to "0" and hit reset
+again and the KIM-UNO looks like this:
+![KIM-UNO running](images/kim1_running.jpg)
