@@ -54,7 +54,6 @@ I wanted to use the ARM board instead of the Arduino Pro Mini. The
 LED control and keyboard scanning is done by the ROM, with this code
 emulating the 6530 PIA chips. There are a couple of exceptions, however.
 First, I find it very difficult to emulate the KIM-1 serial ports
-
 because it is so dependent on timing. Instead, I just check to see
 if the program is executing the ROM routines to read or write to the
 serial port and execute ARM code to do that.
@@ -69,3 +68,10 @@ Third, the KIM-1 had the ST, RS, and SST buttons/switch wired directly
 to the 6502 (there's a little extra circuitry for the NMI). I added
 a periodic scan for those keys so they will work even when the
 system isn't scanning for keys.
+
+## Building
+I normally just build this from CLion, but this command-line should work
+from main directory:
+```
+cmake --build cmake-build-release --target all -- -j 25
+```
